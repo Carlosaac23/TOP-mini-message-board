@@ -9,8 +9,8 @@
   <body>
     <%- include('components/Header') %>
     <section>
-      <h1 class="new-message__title">New Message</h1>
-      <form class="new-message__form" method="POST" action="/new">
+      <h1 class="form-new-message__title">New Message</h1>
+      <form class="form-new-message__form" method="POST" action="/new">
         <div class="input-container">
           <label for="name">Name:</label>
           <input
@@ -33,9 +33,10 @@
           ></textarea>
         </div>
 
-        <button class="new-message__btn" type="submit">Submit</button>
+        <button class="form-new-message__btn" type="submit">Submit</button>
       </form>
     </section>
+    <a class="new-message__btn" href="/">Back home</a>
     <%- include('components/Footer') %>
   </body>
 </html>
