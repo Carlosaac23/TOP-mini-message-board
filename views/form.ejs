@@ -7,20 +7,35 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <form method="POST" action="/new">
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name" placeholder="Enter your name" />
+    <%- include('components/Header') %>
+    <section>
+      <h1 class="new-message__title">New Message</h1>
+      <form class="new-message__form" method="POST" action="/new">
+        <div class="input-container">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
 
-      <label for="message">Message</label>
-      <input
-        type="text"
-        name="message"
-        id="message"
-        placeholder="Enter your message"
-      />
+        <div class="input-container">
+          <label for="message">Message:</label>
+          <textarea
+            name="message"
+            id="message"
+            rows="10"
+            placeholder="Enter your message"
+            required
+          ></textarea>
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
-    <a href="/">Home</a>
+        <button class="new-message__btn" type="submit">Submit</button>
+      </form>
+    </section>
+    <%- include('components/Footer') %>
   </body>
 </html>
