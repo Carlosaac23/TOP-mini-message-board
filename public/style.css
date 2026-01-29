@@ -43,6 +43,11 @@ body {
   font-weight: bold;
 }
 
+.header__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .header__links {
   display: flex;
   gap: 1rem;
