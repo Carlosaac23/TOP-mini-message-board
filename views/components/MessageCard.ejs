@@ -1,0 +1,8 @@
+<div class="message__card">
+  <h1 class="message__card-title">Message from <%= message.user %></h1>
+  <p class="message__card-text"><%= message.text %></p>
+  <p class="message__card-date">
+    <strong>Created: </strong> <%= message.added %>
+  </p>
+  <a class="message__card-btn" href="/<%= message.id %>">More info</a>
+</div>
