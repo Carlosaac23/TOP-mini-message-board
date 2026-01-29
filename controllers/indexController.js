@@ -22,17 +22,21 @@ export function postNewMessage(req, res) {
     hour12: false,
   };
 
-  messages.push({
-    id: crypto.randomUUID(),
-    text: message,
-    user: name,
-    added: new Date().toLocaleDateString('es-CO', options),
-  });
-  res.redirect('/');
+  if (name && message) {
+    messages.push({
+      id: crypto.randomUUID(),
+      text: message,
+      user: name,
+      added: new Date().toLocaleDateString('es-CO', options),
+    });
+    res.redirect('/');
+  }
 }
 
 export async function getMessageInfo(req, res) {
   const { messageID } = req.params;
   const message = await getOneMessage(messages, messageID);
-  res.render('components/MessageInfo', { message });
+  if (message) {
+    res.render('components/MessageInfo', { message });
+  }
 }
