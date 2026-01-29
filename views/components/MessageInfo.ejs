@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1><%= message.text %></h1>
-    <a href="/">Home</a>
+    <div class="info__container">
+      <h1 class="info__title">
+        <strong>A message from:</strong> <%= message.user %>
+      </h1>
+      <p class="info__text"><strong>Message:</strong> <%= message.text %></p>
+      <p class="info__date">
+        <strong>This message was created on:</strong> <%= message.added %>
+      </p>
+      <a class="info__btn" href="/">Back home</a>
+    </div>
+    <%- include('Footer') %>
   </body>
 </html>
