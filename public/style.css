@@ -4,6 +4,7 @@
   --primary-color: #fafafa;
   --secondary-color: #1f1f1f;
   --tertiary-color: #f5f5f5;
+  --gray: #d4d4d4;
 }
 
 *,
@@ -27,6 +28,7 @@ body {
   min-height: 100vh;
 }
 
+/* HEADER */
 .header {
   display: flex;
   align-items: center;
@@ -63,7 +65,9 @@ body {
   color: var(--secondary-color);
 }
 
-.messages__title {
+/* HOMEPAGE */
+.messages__title,
+.new-message__title {
   font-size: 2.4rem;
   font-weight: 700;
   margin: 2rem;
@@ -82,6 +86,7 @@ body {
   border-radius: 0.8rem;
 }
 
+/* MESSAGE CARD */
 .message__card {
   max-width: 50rem;
   background-color: var(--primary-color);
@@ -104,12 +109,12 @@ body {
 }
 
 .message__card-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 0.6rem;
 }
 
 .message__card-date {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 1.2rem;
 }
 
@@ -129,6 +134,74 @@ body {
   transform: scale(1.02);
 }
 
+/* NEW MESSAGE FORM */
+.new-message__form {
+  width: 50rem;
+  border: 1px solid var(--gray);
+  padding: 2rem;
+  border-radius: 0.8rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.input-container {
+  width: 100%;
+}
+
+.input-container label {
+  display: block;
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.input-container textarea,
+.input-container input {
+  font-family: inherit;
+  font-size: 1.5rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  background-color: var(--gray);
+}
+
+.input-container textarea {
+  resize: none;
+}
+
+.input-container textarea::placeholder,
+.input-container input::placeholder {
+  font-family: inherit;
+  color: var(--secondary-color);
+}
+
+.input-container input:focus,
+.input-container textarea:focus {
+  outline: 1.5px solid var(--secondary-color);
+}
+
+.new-message__btn {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.8rem;
+}
+
+.new-message__btn:hover {
+  cursor: pointer;
+}
+
+/* FOOTER */
 .footer {
   margin-top: auto;
   padding: 1rem;
