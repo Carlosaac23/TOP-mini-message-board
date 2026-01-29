@@ -197,7 +197,7 @@ body {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   font-weight: bold;
-  padding: 0.8rem;
+  padding: 1.5rem 0;
   border: none;
   border-radius: 0.8rem;
 }
