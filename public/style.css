@@ -48,31 +48,9 @@ body {
   text-decoration: none;
 }
 
-.header__links {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-  font-size: 1.6rem;
-}
-
-.header__link a {
-  text-decoration: none;
-  color: inherit;
-  padding: 1rem;
-  border-radius: 0.8rem;
-  transition:
-    background-color 0.1s ease-out,
-    color 0.1s ease-out;
-}
-
-.header__link a:hover {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-}
-
 /* HOMEPAGE */
 .messages__title,
-.new-message__title {
+.form-new-message__title {
   font-size: 2.4rem;
   font-weight: 700;
   margin: 2rem;
@@ -131,7 +109,7 @@ body {
   border-radius: 0.8rem;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: transform 0.1s ease-out;
 }
 
@@ -140,7 +118,7 @@ body {
 }
 
 /* NEW MESSAGE FORM */
-.new-message__form {
+.form-new-message__form {
   width: 50rem;
   border: 1px solid var(--gray);
   padding: 2rem;
@@ -193,7 +171,7 @@ body {
   outline: 1.5px solid var(--secondary-color);
 }
 
-.new-message__btn {
+.form-new-message__btn {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   font-weight: bold;
@@ -202,7 +180,7 @@ body {
   border-radius: 0.8rem;
 }
 
-.new-message__btn:hover {
+.form-new-message__btn:hover {
   cursor: pointer;
 }
 
@@ -243,10 +221,33 @@ body {
   border-radius: 0.8rem;
 }
 
+/* NEW MESSAGE BUTTON */
+.new-message__btn {
+  text-decoration: none;
+  position: fixed;
+  bottom: 7rem;
+  right: 3rem;
+  font-weight: bold;
+  font-size: 1.6rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 1.5rem;
+  padding: 1.5rem 3.5rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: transform 0.1s ease-out;
+}
+
+.new-message__btn:hover {
+  transform: scale(0.97);
+}
+
 /* FOOTER */
 .footer {
   margin-top: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: var(--secondary-color);
   color: var(--primary-color);
   text-align: center;
