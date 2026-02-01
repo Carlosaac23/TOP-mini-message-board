@@ -1,8 +1,8 @@
 <div class="message__card">
-  <h1 class="message__card-title">Message from <%= message.user %></h1>
-  <p class="message__card-text"><%= message.text %></p>
+  <h1 class="message__card-title">Message from <%= message.name %></h1>
+  <p class="message__card-text"><%= message.message %></p>
   <p class="message__card-date">
-    <strong>Created: </strong> <%= message.added %>
+    <strong>Created: </strong> <%= message.added.toLocaleString('es-CO') %>
   </p>
   <a class="message__card-btn" href="/<%= message.id %>">More info</a>
 </div>
