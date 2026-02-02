@@ -23,5 +23,5 @@ app.listen(port, error => {
   if (error) {
     throw error;
   }
-  console.log(`Runnig in port ${port}`);
+  console.log(`Runnig in http://localhost:${port}`);
 });

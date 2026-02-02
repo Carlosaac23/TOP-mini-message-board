@@ -1,7 +1,13 @@
-import { messages } from '../db/messages.js';
-import { getOneMessage } from '../helpers/index.js';
+import {
+  getAllMessages,
+  addMessage,
+  getMessage,
+  deleteMessage,
+} from '../db/queries.js';
 
-export function getHomepage(req, res) {
+export async function getHomepage(req, res) {
+  const messages = await getAllMessages();
+
   res.render('index', { title: 'Mini Messageboard', messages });
 }
 
@@ -9,34 +15,31 @@ export function getNewMessageForm(req, res) {
   res.render('form');
 }
 
-export function postNewMessage(req, res) {
+export async function postNewMessage(req, res) {
   const { name, message } = req.body;
 
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  };
-
   if (name && message) {
-    messages.push({
-      id: crypto.randomUUID(),
-      text: message,
-      user: name,
-      added: new Date().toLocaleDateString('es-CO', options),
-    });
+    await addMessage(name, message);
     res.redirect('/');
   }
 }
 
 export async function getMessageInfo(req, res) {
   const { messageID } = req.params;
-  const message = await getOneMessage(messages, messageID);
+
+  if (isNaN(messageID)) {
+    return res.status(404).send('Not found');
+  }
+
+  const message = await getMessage(messageID);
+
   if (message) {
     res.render('components/MessageInfo', { message });
   }
+}
+
+export async function deleteMessageInfo(req, res) {
+  const { messageID } = req.params;
+  await deleteMessage(messageID);
+  res.redirect('/');
 }
