@@ -1,4 +1,9 @@
-import { getAllMessages, addMessage, getMessage } from '../db/queries.js';
+import {
+  getAllMessages,
+  addMessage,
+  getMessage,
+  deleteMessage,
+} from '../db/queries.js';
 
 export async function getHomepage(req, res) {
   const messages = await getAllMessages();
@@ -26,4 +31,11 @@ export async function getMessageInfo(req, res) {
   if (message) {
     res.render('components/MessageInfo', { message });
   }
+}
+
+export async function deleteMessageInfo(req, res) {
+  const { messageID } = req.params;
+  console.log(req);
+  await deleteMessage(messageID);
+  res.redirect('/');
 }
