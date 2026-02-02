@@ -20,5 +20,5 @@ export async function getMessage(messageID) {
 }
 
 export async function deleteMessage(messageID) {
-  await pool.query('DELETE FROM messages WHERE id = "($1)"', [messageID]);
+  await pool.query('DELETE FROM messages WHERE id = ($1)', [messageID]);
 }
