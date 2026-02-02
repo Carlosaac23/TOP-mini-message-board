@@ -5,5 +5,7 @@
     <strong>Created: </strong> <%= message.added.toLocaleString('es-CO') %>
   </p>
   <a class="message__card-btn" href="/<%= message.id %>">More info</a>
-  <a href="/<%= message.id %>">Delete</a>
+  <form class="message__card-delete-form" action="/<%= message.id %>/delete" method="POST">
+    <button type="submit">Delete</button>
+  </form>
 </div>
