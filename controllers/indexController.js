@@ -26,11 +26,6 @@ export async function postNewMessage(req, res) {
 
 export async function getMessageInfo(req, res) {
   const { messageID } = req.params;
-
-  if (isNaN(messageID)) {
-    return res.status(404).send('Not found');
-  }
-
   const message = await getMessage(messageID);
 
   if (message) {
