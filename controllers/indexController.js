@@ -26,6 +26,11 @@ export async function postNewMessage(req, res) {
 
 export async function getMessageInfo(req, res) {
   const { messageID } = req.params;
+
+  if (isNaN(messageID)) {
+    return res.status(404).send('Not found');
+  }
+
   const message = await getMessage(messageID);
 
   if (message) {
@@ -35,7 +40,6 @@ export async function getMessageInfo(req, res) {
 
 export async function deleteMessageInfo(req, res) {
   const { messageID } = req.params;
-  console.log(req);
   await deleteMessage(messageID);
   res.redirect('/');
 }
