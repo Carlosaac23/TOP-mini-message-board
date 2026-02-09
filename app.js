@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 import express from 'express';
 
-import indexRoute from './routes/indexRoute.js';
+import { router } from './routes/indexRoute.js';
 
 const app = express();
 const port = 3000;
@@ -17,10 +17,11 @@ app.set('view engine', 'ejs');
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', indexRoute);
+app.use('/', router);
 
 app.listen(port, error => {
   if (error) {
+    console.error('Failed to start server: ', error);
     throw error;
   }
   console.log(`Runnig in http://localhost:${port}`);
