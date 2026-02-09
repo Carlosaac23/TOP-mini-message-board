@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-const router = Router();
+export const router = Router();
 
 import {
   getHomepage,
@@ -15,5 +15,3 @@ router.get('/new', getNewMessageForm);
 router.post('/new', postNewMessage);
 router.get('/:messageID', getMessageInfo);
 router.post('/:messageID/delete', deleteMessageInfo);
-
-export default router;
