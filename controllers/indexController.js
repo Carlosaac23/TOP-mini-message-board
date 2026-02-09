@@ -6,9 +6,23 @@ import {
 } from '../db/queries.js';
 
 export async function getHomepage(req, res) {
-  const messages = await getAllMessages();
+  try {
+    const messages = await getAllMessages();
 
-  res.render('index', { title: 'Mini Messageboard', messages });
+    if (!messages) {
+      return res.status(404).render('error', {
+        message: 'Messages not found',
+      });
+    }
+
+    res.render('index', { title: 'Mini Messageboard', messages });
+  } catch (error) {
+    console.error('Controller error:', error);
+    res.status(500).render('error', {
+      message: 'Unable to load homepage',
+      error,
+    });
+  }
 }
 
 export function getNewMessageForm(req, res) {
@@ -16,25 +30,54 @@ export function getNewMessageForm(req, res) {
 }
 
 export async function postNewMessage(req, res) {
-  const { name, message } = req.body;
+  try {
+    const { name, message } = req.body;
 
-  if (name && message) {
-    await addMessage(name, message);
-    res.redirect('/');
+    if (name && message) {
+      await addMessage(name, message);
+      res.redirect('/');
+    }
+  } catch (error) {
+    console.error('Controller error:', error);
+    res.status(500).render('error', {
+      message: 'Error adding new message',
+      error,
+    });
   }
 }
 
 export async function getMessageInfo(req, res) {
-  const { messageID } = req.params;
-  const message = await getMessage(messageID);
+  try {
+    const { messageID } = req.params;
+    const message = await getMessage(messageID);
 
-  if (message) {
+    if (!message) {
+      return res.status(404).render('error', {
+        message: 'Message not found',
+        details: `Not message found with ID ${messageID}`,
+      });
+    }
+
     res.render('components/MessageInfo', { message });
+  } catch (error) {
+    console.error('Controller error:', error);
+    res
+      .status(500)
+      .render('error', { message: 'Error getting message info', error });
   }
 }
 
 export async function deleteMessageInfo(req, res) {
-  const { messageID } = req.params;
-  await deleteMessage(messageID);
-  res.redirect('/');
+  try {
+    const { messageID } = req.params;
+    await deleteMessage(messageID);
+
+    return res.redirect('/');
+  } catch (error) {
+    console.error('Controller error:', error);
+    res.status(500).render('error', {
+      message: 'Error deleting message',
+      error,
+    });
+  }
 }

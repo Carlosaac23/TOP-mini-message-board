@@ -2,10 +2,16 @@
   <h1 class="message__card-title">Message from <%= message.name %></h1>
   <p class="message__card-text"><%= message.message %></p>
   <p class="message__card-date">
-    <strong>Created: </strong> <%= message.added.toLocaleString('es-CO') %>
+    <strong>Created: </strong> <%= message.added.toLocaleString('es-CO', {
+      timeZone: 'America/Bogota',
+    }) %>
   </p>
   <a class="message__card-btn" href="/<%= message.id %>">More info</a>
-  <form class="message__card-delete-form" action="/<%= message.id %>/delete" method="POST">
+  <form
+    class="message__card-delete-form"
+    action="/<%= message.id %>/delete"
+    method="POST"
+  >
     <button type="submit">Delete</button>
   </form>
 </div>
