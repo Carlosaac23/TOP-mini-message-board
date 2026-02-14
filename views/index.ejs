@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <%- include('components/Header') %>
+    <%- include('./partials/header.ejs') %>
+
     <section>
       <h1 class="messages__title">Messages</h1>
       <div class="messages__container">
         <% for (let i = 0; i < messages.length; i++) { %> <%-
-        include('components/MessageCard.ejs', { message: messages[i] }) %> <% }
+        include('./partials/message-card.ejs', { message: messages[i] }) %> <% }
         %>
       </div>
     </section>
     <a class="new-message__btn" href="/new">New message</a>
-    <%- include('components/Footer') %>
+
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>
