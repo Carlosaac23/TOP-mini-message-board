@@ -13,11 +13,11 @@
       </h1>
       <p class="info__text"><strong>Message:</strong> <%= message.message %></p>
       <p class="info__date">
-        <strong>This message was created on:</strong> <%=
-        message.added.toLocaleString('es-CO') %>
+        <strong>This message was created on:</strong> <%= new
+        Date(message.createdAt).toLocaleString('es-CO', { timeZone: 'America/Bogota' }) %>
       </p>
       <a class="info__btn" href="/">Back home</a>
     </div>
-    <%- include('Footer') %>
+    <%- include('footer') %>
   </body>
 </html>

@@ -1,34 +1,25 @@
-import { pool } from './pool.js';
-import { safeQuerySingle, safeQueryMany } from './safeQueries.js';
+import { supabase } from './client.js';
 
 export async function getAllMessages() {
-  return await safeQueryMany(
-    () => pool.query('SELECT * FROM messages'),
-    'getAllMessage()'
-  );
+  const { data, error } = await supabase.from('messages').select('*');
+  if (error) throw new Error(error);
+  return data;
 }
 
 export async function addMessage(name, message) {
-  return await safeQuerySingle(
-    () =>
-      pool.query('INSERT INTO messages (name, message) VALUES ($1, $2)', [
-        name,
-        message,
-      ]),
-    `addMessage(${name}, ${message})`
-  );
+  const { error } = await supabase.from('messages').insert({ name, message });
+  if (error) throw new Error(error);
 }
 
 export async function getMessage(messageID) {
-  return await safeQuerySingle(
-    () => pool.query('SELECT * FROM messages WHERE id = $1', [messageID]),
-    `getMessage(${messageID})`
-  );
+  const { data, error } = await supabase
+    .from('messages')
+    .select()
+    .eq('id', messageID);
+  if (error) throw new Error(error);
+  return data[0];
 }
 
 export async function deleteMessage(messageID) {
-  return await safeQuerySingle(
-    () => pool.query('DELETE FROM messages WHERE id = $1', [messageID]),
-    `deleteMessage(${messageID})`
-  );
+  await supabase.from('messages').delete().eq('id', messageID);
 }

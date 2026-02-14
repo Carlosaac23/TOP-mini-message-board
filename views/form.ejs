@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <%- include('components/Header') %>
+    <%- include('./partials/header.ejs') %>
+
     <section>
       <h1 class="form-new-message__title">New Message</h1>
       <form class="form-new-message__form" method="POST" action="/new">
@@ -37,6 +38,7 @@
       </form>
     </section>
     <a class="new-message__btn" href="/">Back home</a>
-    <%- include('components/Footer') %>
+
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>
