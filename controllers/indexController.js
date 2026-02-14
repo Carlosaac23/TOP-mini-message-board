@@ -15,7 +15,7 @@ export async function getHomepage(req, res) {
       });
     }
 
-    res.render('index', { title: 'Mini Messageboard', messages });
+    res.render('index', { messages });
   } catch (error) {
     console.error('Controller error:', error);
     res.status(500).render('error', {
@@ -58,7 +58,7 @@ export async function getMessageInfo(req, res) {
       });
     }
 
-    res.render('components/MessageInfo', { message });
+    res.render('partials/message-info', { message });
   } catch (error) {
     console.error('Controller error:', error);
     res
