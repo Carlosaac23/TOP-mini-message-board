@@ -2,7 +2,7 @@
   <h1 class="message__card-title">Message from <%= message.name %></h1>
   <p class="message__card-text"><%= message.message %></p>
   <p class="message__card-date">
-    <strong>Created: </strong> <%= new Date(message.added).toLocaleString('es-CO', {
+    <strong>Created: </strong> <%= new Date(message.createdAt).toLocaleString('es-CO', {
       timeZone: 'America/Bogota',
     }) %>
   </p>
