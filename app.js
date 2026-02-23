@@ -3,6 +3,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 import express from 'express';
+import methodOverride from 'method-override';
 
 import { router } from './routes/indexRoute.js';
 
@@ -16,6 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.use('/', router);
 
