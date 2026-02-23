@@ -9,7 +9,7 @@
   <a class="message__card-btn" href="/<%= message.id %>">More info</a>
   <form
     class="message__card-delete-form"
-    action="/<%= message.id %>/delete"
+    action="/<%= message.id %>/delete?_method=DELETE"
     method="POST"
   >
     <button type="submit">Delete</button>
