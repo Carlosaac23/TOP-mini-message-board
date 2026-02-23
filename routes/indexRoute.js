@@ -14,4 +14,4 @@ router.get('/', getHomepage);
 router.get('/new', getNewMessageForm);
 router.post('/new', postNewMessage);
 router.get('/:messageID', getMessageInfo);
-router.post('/:messageID/delete', deleteMessageInfo);
+router.delete('/:messageID/delete', deleteMessageInfo);
