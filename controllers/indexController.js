@@ -18,7 +18,7 @@ export async function getHomepage(req, res) {
     res.render('index', { messages });
   } catch (error) {
     console.error('Controller error:', error);
-    res.status(500).render('error', {
+    return res.status(500).render('error', {
       message: 'Unable to load homepage',
       error,
     });
@@ -39,7 +39,7 @@ export async function postNewMessage(req, res) {
     }
   } catch (error) {
     console.error('Controller error:', error);
-    res.status(500).render('error', {
+    return res.status(500).render('error', {
       message: 'Error adding new message',
       error,
     });
@@ -61,7 +61,7 @@ export async function getMessageInfo(req, res) {
     res.render('partials/message-info', { message });
   } catch (error) {
     console.error('Controller error:', error);
-    res
+    return res
       .status(500)
       .render('error', { message: 'Error getting message info', error });
   }
@@ -75,7 +75,7 @@ export async function deleteMessageInfo(req, res) {
     return res.redirect('/');
   } catch (error) {
     console.error('Controller error:', error);
-    res.status(500).render('error', {
+    return res.status(500).render('error', {
       message: 'Error deleting message',
       error,
     });
