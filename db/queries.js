@@ -1,25 +1,34 @@
-import { supabase } from './client.js';
+import { sql } from './client.js';
 
 export async function getAllMessages() {
-  const { data, error } = await supabase.from('messages').select('*');
-  if (error) throw new Error(error.message);
-  return data;
+  try {
+    return await sql`SELECT * FROM messages`;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }
 
 export async function addMessage(name, message) {
-  const { error } = await supabase.from('messages').insert({ name, message });
-  if (error) throw new Error(error.message);
+  try {
+    await sql`INSERT INTO messages (name, message) VALUES (${name}, ${message})`;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }
 
 export async function getMessage(messageID) {
-  const { data, error } = await supabase
-    .from('messages')
-    .select('*')
-    .eq('id', messageID);
-  if (error) throw new Error(error.message);
-  return data[0];
+  try {
+    const rows = await sql`SELECT * FROM messages WHERE id = ${messageID}`;
+    return rows[0];
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }
 
 export async function deleteMessage(messageID) {
-  await supabase.from('messages').delete().eq('id', messageID);
+  try {
+    await sql`DELETE FROM messages WHERE id = ${messageID}`;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }
